@@ -11,6 +11,7 @@ Created on Tue Jul 24 11:20:01 2018
 
 @author: yourdaddy
 """
+
 # LSTM æ¨¡å
 import numpy as np
 import pandas as pd
@@ -91,7 +92,7 @@ def butter_bandpass_filtfilter(data,lowcut,highcut,fs,order=2):
     y = signal.filtfilt(b, a, data)
     return y
 
-def Preprocess(data):#data为原始信号，dataout为滤波信号，预处理       
+def Preprocess(data):#data为原始信号，dataout为滤波信号，预处�?      
     dataout=butter_bandpass_filtfilter(data, lowcut, highcut, sample, order)    
     return dataout
 
@@ -218,8 +219,8 @@ def hilbert_phase(data1,data2,phase=0):#data1ä¸ºåå§ä¿¡å·ï¼�
 def Phase_ROC(data,phase_threshold):
     er_list_A=[]
     tp=0#实际与预测值都为真
-    fn=0#实际为真，预测值为否
-    fp=0#实际为否，预测值为真
+    fn=0#实际为真，预测值为�?
+    fp=0#实际为否，预测值为�?
     tn=0#实际与预测值都为否
     er_p=0
     er_t=0
@@ -228,11 +229,11 @@ def Phase_ROC(data,phase_threshold):
         for i in range(0,40):
             data1=data[j]
             epoch=data1[i*1000:int(calculate_num+Forecast_time*sample)+i*1000]                       
-#            f_temp=epoch[0:calculate_num]#用来计算的数据
+#            f_temp=epoch[0:calculate_num]#用来计算的数�?
 #            ff_temp=ForecastbyARmodel(f_temp,sample)#预测
 #            ff_temp=ForecastbyFFT(f_temp,sample)
 #            ff_forecast=Preprocess(ff_temp)
-#            epoch_filt=Preprocess(epoch)#1.实际脑电预处理   
+#            epoch_filt=Preprocess(epoch)#1.实际脑电预处�?  
 
 
             epoch_filt=Preprocess(epoch)#1.ä¿¡å·é¢å¤ç?
@@ -325,7 +326,7 @@ ctt=case[8]
 start = float(time.time())#è®°å½æ¶é´
 
 #epoch=ctt[start_time:int(calculate_num+Forecast_time*sample)+start_time]
-#f_temp=epoch[0:calculate_num]#用来计算的数据
+#f_temp=epoch[0:calculate_num]#用来计算的数�?
 #ff_temp=ForecastbyARmodel(f_temp,sample)#预测
 #ff_temp=ForecastbyFFT(f_temp,sample)
 #ff_forecast=Preprocess(ff_temp)
@@ -342,7 +343,7 @@ ff_forecast=ForecastbyARmodel(f_temp,sample)
 end = float(time.time())#è®°å½æ¶é´
 print(end - start)#è®°å½æ¶é´
 
-epoch_filt=Preprocess(epoch)#1.实际脑电预处理
+epoch_filt=Preprocess(epoch)#1.实际脑电预处�?
 ph1, ph2,er,t=hilbert_phase(epoch_filt,ff_forecast,phase)
 
 
